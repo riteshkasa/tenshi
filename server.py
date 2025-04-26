@@ -4,6 +4,12 @@ import io
 from PIL import Image
 import cv2
 import numpy as np
+from dotenv import load_dotenv
+import os
+from pymongo import MongoClient
+import face_recognition
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -18,11 +24,8 @@ async def analyze_snapshot(file: UploadFile = File(...)):
         # Step 2: Perform Face Recognition (mocked for now)
         patient_id = recognize_patient(cv_image)
 
-        # Step 3: Perform Health Analysis
-        health_status = analyze_health_cues(cv_image)
-
         # Step 4: Suggest Next Action
-        suggestion = generate_suggestion(patient_id, health_status)
+        suggestion = generate_suggestion(patient_id)
 
         # Step 5: Create response
         response = {
@@ -42,46 +45,99 @@ async def analyze_snapshot(file: UploadFile = File(...)):
 def root():
     return {"message": "PulseAR backend running!"}
 
-# Placeholder function for patient recognition
-def recognize_patient(image):
-    # TODO: Implement real facial recognition here
-    # For now, return dummy patient
-    return "patient_001"
 
-# Placeholder function for health analysis
-def analyze_health_cues(image):
-    # TODO: Analyze skin color, bleeding, consciousness
-    # Mock some health status for now
-    return {
-        "cyanosis_detected": False,
-        "bleeding_detected": True,
-        "conscious": True
-    }
+def load_known_patients_from_db():
+    # 1) Connect to MongoDB
+    uri     = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+    db_name = os.getenv("MONGODB_DB",  "mydatabase")
+    client  = MongoClient(uri)
+    db      = client[db_name]
+    coll    = db["patients"]
 
-# Placeholder medical database
-PATIENT_DATABASE = {
-    "patient_001": {
-        "name": "John Doe",
-        "conditions": ["Diabetes", "Hypertension"],
-        "allergies": ["Penicillin"]
-    }
-}
+    known_encodings = []
+    known_ids       = []
+
+    # 2) Fetch every patient document, but only pull the ID + photo field
+    cursor = coll.find({}, {"patient_id": 1, "photo": 1})
+
+    for doc in cursor:
+        pid        = doc.get("patient_id")
+        photo_data = doc.get("photo")   # this should be your binary image blob
+
+        if not pid or not photo_data:
+            continue
+
+        try:
+            # 3) Load into face_recognition from bytes
+            image    = face_recognition.load_image_file(io.BytesIO(photo_data))
+            encodings = face_recognition.face_encodings(image)
+
+            if encodings:
+                known_encodings.append(encodings[0])
+                known_ids.append(pid)
+
+        except Exception as e:
+            print(f"[WARN] could not encode face for {pid}: {e}")
+
+    return known_encodings, known_ids
+
+def recognize_patient(cv2_image):
+    rgb_image = cv2.cvtColor(cv2_image, cv2.COLOR_BGR2RGB)
+    face_encodings = face_recognition.face_encodings(rgb_image)
+
+    if not face_encodings:
+        return "unknown_patient"
+
+    uploaded_encoding = face_encodings[0]
+    matches = face_recognition.compare_faces(KNOWN_ENCODINGS, uploaded_encoding)
+
+    if True in matches:
+        first_match_index = matches.index(True)
+        return KNOWN_IDS[first_match_index]
+
+    return "unknown_patient"
 
 def get_patient_medical_history(patient_id):
-    return PATIENT_DATABASE.get(patient_id, {})
+    doc = coll.find_one(
+        {"patient_id": patient_id},
+        {"_id": 0, "medical_history": 1}
+    )
+    if not doc:
+        return {}
+    return doc["medical_history"]
 
 # Placeholder suggestion engine
-def generate_suggestion(patient_id, health_status):
+def generate_suggestion(patient_id):
     history = get_patient_medical_history(patient_id)
     conditions = history.get("conditions", [])
 
-    if "Asthma" in conditions and health_status["cyanosis_detected"]:
-        return "Administer oxygen immediately."
-
-    if "Diabetes" in conditions and not health_status["conscious"]:
-        return "Check blood sugar levels urgently."
-
-    if health_status["bleeding_detected"]:
-        return "Apply pressure to wound and prepare for evacuation."
+    # gemini plz do all the work for me papi
+    # i love AI ^.^
 
     return "Monitor patient and reassess."
+
+
+
+
+
+
+
+@app.get("/test-db")
+def test_db_connection():
+    try:
+        print("test")
+        uri     = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+        db_name = os.getenv("MONGODB_DB",  "mydatabase")
+        print(uri)
+        print(db_name)
+        client  = MongoClient(uri)
+        db      = client[db_name]
+        coll    = db["patients"]
+        # Try fetching one patient document
+        doc = coll.find_one({}, {"_id": 0})  # get any patient
+        if doc:
+            return {"status": "success", "sample_patient": doc}
+        else:
+            return {"status": "success", "sample_patient": None}
+    except Exception as e:
+        return {"status": "error", "details": str(e)}
