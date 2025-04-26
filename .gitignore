@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignore virtual environments
 venv/
 .env
@@ -16,3 +17,6 @@ __pycache__/
 
 # OS-generated
 Thumbs.db
+=======
+assets/
+>>>>>>> origin/main
