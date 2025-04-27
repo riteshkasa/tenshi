@@ -1,0 +1,62 @@
+if (script.onAwake) {
+	script.onAwake();
+	return;
+};
+function checkUndefined(property, showIfData){
+   for (var i = 0; i < showIfData.length; i++){
+       if (showIfData[i][0] && script[showIfData[i][0]] != showIfData[i][1]){
+           return;
+       }
+   }
+   if (script[property] == undefined){
+      throw new Error('Input ' + property + ' was not provided for the object ' + script.getSceneObject().name);
+   }
+}
+// @input SceneObject yesButton
+checkUndefined("yesButton", []);
+// @input SceneObject noButton
+checkUndefined("noButton", []);
+// @input Component.Text messageText
+checkUndefined("messageText", []);
+// @input Component.Image displayGraphic
+checkUndefined("displayGraphic", []);
+// @input Component.AudioComponent audioStartPlayer
+checkUndefined("audioStartPlayer", []);
+// @input Component.AudioComponent audioBreathingRecoveryPosPlayer
+checkUndefined("audioBreathingRecoveryPosPlayer", []);
+// @input Component.AudioComponent audioCallEmergencyServicesPlayer
+checkUndefined("audioCallEmergencyServicesPlayer", []);
+// @input Component.AudioComponent audioSignalForHelpPlayer
+checkUndefined("audioSignalForHelpPlayer", []);
+// @input Component.AudioComponent audioStayAndMonitorPlayer
+checkUndefined("audioStayAndMonitorPlayer", []);
+// @input Component.AudioComponent audioNoBreathingCheckPulsePlayer
+checkUndefined("audioNoBreathingCheckPulsePlayer", []);
+// @input Component.AudioComponent audioRescueBreathsOnlyPlayer
+checkUndefined("audioRescueBreathsOnlyPlayer", []);
+// @input Component.AudioComponent audioContinueRescueBreathsPlayer
+checkUndefined("audioContinueRescueBreathsPlayer", []);
+// @input Component.AudioComponent audioStartChestCompressionsPlayer
+checkUndefined("audioStartChestCompressionsPlayer", []);
+// @input Component.AudioComponent audioContinueCprCyclesPlayer
+checkUndefined("audioContinueCprCyclesPlayer", []);
+// @input Component.AudioComponent audioRecoveryPositionPlayer
+checkUndefined("audioRecoveryPositionPlayer", []);
+// @input Component.AudioComponent audioEndPlayer
+checkUndefined("audioEndPlayer", []);
+var scriptPrototype = Object.getPrototypeOf(script);
+if (!global.BaseScriptComponent){
+   function BaseScriptComponent(){}
+   global.BaseScriptComponent = BaseScriptComponent;
+   global.BaseScriptComponent.prototype = scriptPrototype;
+   global.BaseScriptComponent.prototype.__initialize = function(){};
+   global.BaseScriptComponent.getTypeName = function(){
+       throw new Error("Cannot get type name from the class, not decorated with @component");
+   }
+}
+var Module = require("../../../../../../../Modules/Src/Assets/SpectaclesInteractionKit/Examples/RocketWorkshop/Scripts/RocketLaunchControl");
+Object.setPrototypeOf(script, Module.CPRGuideControl.prototype);
+script.__initialize();
+if (script.onAwake) {
+   script.onAwake();
+}

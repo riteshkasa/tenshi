@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    8dd1ca5b-ef8d-4851-a6ec-354ed778886f: 0453aa7c-3634-4b81-b5cb-37c4857da544/462ebc9a1b638f8066107c3c34e0fbf2/Data/audioStart.mp3
+  Assets:
+    - !<FileAudioTrack/8dd1ca5b-ef8d-4851-a6ec-354ed778886f>
+      PackagePath: ""
+  SourceHash: 462ebc9a1b638f8066107c3c34e0fbf2
+  FileHash: 17a78a32a658266563493fdc9e4b64dc
+  NativePackageItems:
+    []

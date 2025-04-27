@@ -1,0 +1,15 @@
+ExternalSources:
+  type: "std::map<class Es::Uuid,class Es::Path,struct std::less<class Es::Uuid>,class std::allocator<struct std::pair<class Es::Uuid const ,class Es::Path> > >"
+  value:
+    - 0453aa7c-3634-4b81-b5cb-37c4857da544: "C:/Users/dansp/Downloads/audioStart.mp3"
+    - 10c4bbed-f186-4dfd-afe8-13444a68b54c: "C:/Users/dansp/Downloads/audioBreaths.mp3"
+    - 147d44ce-ad7f-4334-b1f4-224675441572: "C:/Users/dansp/Downloads/audioRecovery.mp3"
+    - 45d195d5-372c-4d3e-b823-7612cfeaf569: "C:/Users/dansp/Downloads/audioMonitor.mp3"
+    - 4ab91307-ac99-46c4-aec3-32cc55d935ac: "C:/Users/dansp/Downloads/tenshi.png"
+    - 6e2525f4-8290-4b1c-9b50-cd77307059f8: "C:/Users/dansp/Downloads/audioCntChest.mp3"
+    - 6f8a0951-dbb2-445c-b799-5cefc27bb46d: "C:/Users/dansp/Downloads/audioCntBreaths.mp3"
+    - 832b4ee1-c7ca-4ebe-834c-48ead789566f: "C:/Users/dansp/Downloads/audioChest.mp3"
+    - b5bc489b-70f8-4983-a184-7e3da50e2ac3: "C:/Users/dansp/Downloads/audioShout.mp3"
+    - e8618a13-1409-4d52-9946-129fc718873e: "C:/Users/dansp/Downloads/deepgram-draco-1745740767014.mp3"
+    - f11ec9d1-20cb-4f1a-aa62-a13b92e46fcf: "C:/Users/dansp/Downloads/audioPulse.mp3"
+  options: 4

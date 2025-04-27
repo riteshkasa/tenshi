@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    64436826-5a36-46fd-8aad-d24b9634daa4: 832b4ee1-c7ca-4ebe-834c-48ead789566f/909935933c11f4944d609a498bb522ef/Data/audioChest.mp3
+  Assets:
+    - !<FileAudioTrack/64436826-5a36-46fd-8aad-d24b9634daa4>
+      PackagePath: ""
+  SourceHash: 909935933c11f4944d609a498bb522ef
+  FileHash: ab5ff2213475f5f4c00f3e799801a404
+  NativePackageItems:
+    []

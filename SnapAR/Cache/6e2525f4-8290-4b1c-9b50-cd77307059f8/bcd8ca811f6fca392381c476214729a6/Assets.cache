@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    0e935cee-a450-4959-886b-ac2bbac25e5b: 6e2525f4-8290-4b1c-9b50-cd77307059f8/bcd8ca811f6fca392381c476214729a6/Data/audioCntChest.mp3
+  Assets:
+    - !<FileAudioTrack/0e935cee-a450-4959-886b-ac2bbac25e5b>
+      PackagePath: ""
+  SourceHash: bcd8ca811f6fca392381c476214729a6
+  FileHash: 0fdd115f90eecbe380a030558825700a
+  NativePackageItems:
+    []

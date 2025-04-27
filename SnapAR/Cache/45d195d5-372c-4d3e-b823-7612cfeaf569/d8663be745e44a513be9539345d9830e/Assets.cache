@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    3748df26-c465-4ce2-a30f-e8d9fb6926de: 45d195d5-372c-4d3e-b823-7612cfeaf569/d8663be745e44a513be9539345d9830e/Data/audioMonitor.mp3
+  Assets:
+    - !<FileAudioTrack/3748df26-c465-4ce2-a30f-e8d9fb6926de>
+      PackagePath: ""
+  SourceHash: d8663be745e44a513be9539345d9830e
+  FileHash: db6852ed437e4c54d7ef88b227b7cdb9
+  NativePackageItems:
+    []

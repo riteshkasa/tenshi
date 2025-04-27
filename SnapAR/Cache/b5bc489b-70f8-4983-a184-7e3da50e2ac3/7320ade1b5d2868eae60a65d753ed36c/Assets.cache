@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    c1ed83ad-809c-4730-9765-fb156985e649: b5bc489b-70f8-4983-a184-7e3da50e2ac3/7320ade1b5d2868eae60a65d753ed36c/Data/audioShout.mp3
+  Assets:
+    - !<FileAudioTrack/c1ed83ad-809c-4730-9765-fb156985e649>
+      PackagePath: ""
+  SourceHash: 7320ade1b5d2868eae60a65d753ed36c
+  FileHash: f307450071c1d9f781d21cf9c254d9d9
+  NativePackageItems:
+    []

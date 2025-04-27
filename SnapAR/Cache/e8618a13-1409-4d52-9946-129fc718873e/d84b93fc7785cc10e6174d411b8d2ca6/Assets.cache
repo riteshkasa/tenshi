@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    36d95dcd-e18b-446b-8f01-a1897c2e0a67: e8618a13-1409-4d52-9946-129fc718873e/d84b93fc7785cc10e6174d411b8d2ca6/Data/deepgram-draco-1745740767014.mp3
+  Assets:
+    - !<FileAudioTrack/36d95dcd-e18b-446b-8f01-a1897c2e0a67>
+      PackagePath: ""
+  SourceHash: d84b93fc7785cc10e6174d411b8d2ca6
+  FileHash: b58a99df63e065d6db01f794fc627997
+  NativePackageItems:
+    []

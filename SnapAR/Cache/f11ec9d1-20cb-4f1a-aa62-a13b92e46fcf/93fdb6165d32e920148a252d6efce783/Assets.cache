@@ -1,0 +1,10 @@
+- !<AssetCache>
+  AssetFiles:
+    a47de0eb-9468-4f60-9565-2737b4af8fdf: f11ec9d1-20cb-4f1a-aa62-a13b92e46fcf/93fdb6165d32e920148a252d6efce783/Data/audioPulse.mp3
+  Assets:
+    - !<FileAudioTrack/a47de0eb-9468-4f60-9565-2737b4af8fdf>
+      PackagePath: ""
+  SourceHash: 93fdb6165d32e920148a252d6efce783
+  FileHash: a941187f88989b7650bb287f8182523b
+  NativePackageItems:
+    []

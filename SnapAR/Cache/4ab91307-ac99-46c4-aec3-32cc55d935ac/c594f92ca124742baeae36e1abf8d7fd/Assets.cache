@@ -1,0 +1,13 @@
+- !<AssetCache>
+  AssetFiles:
+    31307bd6-fd0d-4ad8-afba-b9bd53907f7a: 4ab91307-ac99-46c4-aec3-32cc55d935ac/c594f92ca124742baeae36e1abf8d7fd/Data/tenshi.png
+  Assets:
+    - !<FileTexture/31307bd6-fd0d-4ad8-afba-b9bd53907f7a>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 1024
+        Height: 1024
+  SourceHash: c594f92ca124742baeae36e1abf8d7fd
+  FileHash: d3880d8362950f98dab5b0f5f5e46e4d
+  NativePackageItems:
+    []
