@@ -20,7 +20,7 @@ interface MapProps {
   markers?: MarkerData[];
 }
 
-export default function MapView({ center, zoom = 13, markers }: MapProps) {
+export default function MapView({ center, zoom = 14, markers }: MapProps) {
   // Fix Leaflet default icon issues
   useEffect(() => {
     // This check ensures it runs only in the browser
@@ -75,7 +75,7 @@ export default function MapView({ center, zoom = 13, markers }: MapProps) {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={center} icon={new L.Icon({
+          <Marker position={[34.070211, -118.45]} icon={new L.Icon({
             iconRetinaUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
             shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
@@ -84,18 +84,7 @@ export default function MapView({ center, zoom = 13, markers }: MapProps) {
             popupAnchor: [1, -34],
             tooltipAnchor: [16, -28]
           })}>
-            <Popup>UCLA (Current Location)</Popup>
-          </Marker>
-          <Marker position={center} icon={new L.Icon({
-            iconRetinaUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            tooltipAnchor: [16, -28]
-          })}>
-            <Popup>UCLA (Current Location)</Popup>
+            <Popup>Patient's Location</Popup>
           </Marker>
           {/* Render markers if the markers prop is provided */}
           {markers && markers.length > 0 && markers.map((marker) => (
