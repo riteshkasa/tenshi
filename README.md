@@ -1,8 +1,8 @@
-#Frontend
+# Frontend
 Command: uvicorn server:app --reload
 
-#Backend
-Command: npm run dev=
+# Backend
+Command: npm run dev
 
 Installations
 pip install fastapi uvicorn pillow opencv-python scikit-learn
